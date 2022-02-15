@@ -1,5 +1,8 @@
 const fs = require('fs') ;
 const yargs = require('yargs') ;
+const notes = require('./notes.js');
+
+
 //fs.writeFileSync('notes',"New Notes") ;
 
 fs.appendFileSync('notes', '. More Text') ;
@@ -27,6 +30,8 @@ yargs.command(
         handler: function (argv) {
             console.log("Title: " + argv.title) ;
             console.log("Body: " + argv.body) ;
+
+            notes.addNote(argv.title,argv.body) ;
         }
     }
 )
