@@ -1,6 +1,6 @@
 const fs = require('fs')
 
-const getNotes =function() {
+const getNotes = () => {
     return " notes...."
 }
 
@@ -17,10 +17,8 @@ const loadNotes = function () {
 
 const addNote = function (title, body) {
     const notes = loadNotes()
-    const duplicateNotes = notes.filter(function (note) {
-        return note.title === title
-    })
-
+    const duplicateNotes = notes.filter((note) => note.title === title)
+    debugger
     if (duplicateNotes.length === 0) {
         notes.push({
             title: title,
@@ -33,12 +31,14 @@ const addNote = function (title, body) {
     }
 }
 
-const saveNotes = function (notes) {
+const saveNotes = (notes)  => {
     const dataJSON = JSON.stringify(notes)
     fs.writeFileSync('notes.json', dataJSON)
 }
 
+const removeNote = (notes) => { return "pseudo function yet to be complete"}
 module.exports = {
     getNotes:getNotes,
-    addNote: addNote 
+    addNote: addNote,
+    removeNote : removeNote,
 }
